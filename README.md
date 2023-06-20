@@ -1,129 +1,120 @@
-# Roguelike
-Roguelike C# 
+# TurnBased roguelike
+TurnBased roguelike C# 
 
-Claro! Aqui está uma versão simplificada do markdown utilizando tabelas:
+# Character
 
-# Documentação dos Scripts
+The `Character` script contains the definition of the `Character` class, representing characters in the game.
 
-| Script        | Descrição                                                             |
-|---------------|----------------------------------------------------------------------|
-| Character     | Contém a definição da classe Character, que representa um personagem no jogo.              |
-| SetupCharacter| Contém funções auxiliares para configurar os personagens no jogo.                  |
-| TurnBased     | Implementa a lógica do sistema de jogo baseado em turnos.                                      |
-| WorldMap      | Contém a definição da classe WorldMap, que representa o mapa do mundo do jogo.              |
-| Grid          | Contém a definição da classe Grid, que representa uma grade no jogo.                       |
-| Types         | Contém definições de tipos de dados utilizados no jogo.                                   |
-| Utils         | Contém funções utilitárias para o jogo.                                                    |
-| Program       | Ponto de entrada do programa principal.                                                    |
+## Methods
 
-## Character
+| Method                    | Description                                                   |
+|---------------------------|---------------------------------------------------------------|
+| `Character()` | Constructor for the `Character` class. Initializes a character with the given `type`. |
+| `StartTurn()`          | Starts this character's turn to take action. |
+| `CheckCloseTargets()`        | Scans neighboring cells for target enemies.                  |
+| `WalkTO()`        | Checks neighboring cells and checks if they can move to them.                  |
+| `Attack()`        | Check neighboring cells and attack if the cell is occupied.                  |
+| `TakeDamage()`        | Takes damage applied by your enemy.                  |
+| `Die()`        | Actions performed at the moment the player dies.                  |
 
-O script `Character` contém a definição da classe Character, que representa um personagem no jogo.
+The `Character` class represents a character in the game and provides methods to manipulate their attributes such as health and perform actions like attacking other characters.
 
-Métodos:
+By utilizing the `Character` class, you can create and manage characters, and track their health, or interactions between them.
 
-| Método                 | Descrição                                             |
-|------------------------|-------------------------------------------------------|
-| `__init__(name, health, attack)` | Construtor da classe Character.                       |
-| `take_damage(damage)`         | Reduz a quantidade de pontos de vida do personagem.   |
-| `attack_target(target)`       | Realiza um ataque ao alvo especificado.                |
+The `Character` script contains the definition of the `Character` class, representing characters in the game.
 
-## SetupCharacter
 
-O script `SetupCharacter` contém funções auxiliares para configurar os personagens no jogo.
+# SetupCharacters
 
-Funções:
+The `SetupCharacters` script contains the character's creation and allocation logic.
 
-| Função                   | Descrição                                          |
-|--------------------------|----------------------------------------------------|
-| `create_character(name)` | Cria e retorna um objeto Character com o nome dado. |
+## Methods
 
-## TurnBased
+| Method                    | Description                                                   |
+|---------------------------|---------------------------------------------------------------|
+| `SetupCharacters()` | Constructor for the `SetupCharacters` class. Initializes character's properties. |
+| `SetupCharactersProperties()`          | Setup characters's properties. |
+| `CreateCharacter()`        | Create new characters by with a given `type`.                  |
+| `SetupTargets()`        | Set targets for the given character.                  |
+| `AllocateCharacter()`        | Allocate characters on the game map.                  |
 
-O script `TurnBased` implementa a lógica do sistema de jogo baseado em turnos.
+The `SetupCharacters` class represents a manager to manipulate the character's attributes such as actions and behaviors.
 
-Classes:
+By utilizing the `SetupCharacters` class, you can create and manage characters on the map.
 
-| Classe              | Descrição                                            |
-|---------------------|------------------------------------------------------|
-| `TurnBasedGame` | Representa um jogo baseado em turnos.               |
 
-Métodos:
+# TurnBased
 
-| Método           | Descrição                                   |
-|------------------|---------------------------------------------|
-| `__init__()`     | Construtor da classe TurnBasedGame.         |
-| `start_game()`   | Inicia o jogo.                              |
-| `next_turn()`    | Avança para o próximo turno.                |
-| `game_over()`    | Verifica se o jogo acabou.                   |
+The `TurnBased` script contains the game's logic creation.
 
-## WorldMap
+## Methods
 
-O script `WorldMap` contém a definição da classe WorldMap, que representa o mapa do mundo do jogo.
+| Method                    | Description                                                   |
+|---------------------------|---------------------------------------------------------------|
+| `TurnBased()` | Constructor for the `TurnBased` class. Initializes the game's logic. |
+| `StartTurn()`          | Starts turns for each player in the global player list order. |
+| `HandleTurn()`        | Wait for the player to press a key to proceed to the next action while the players have life.                  |
 
-Classes:
+The `TurnBased` class represents a manager to manipulate the game logic and how the turns will work.
 
-| Classe           | Descrição                                     |
-|------------------|-----------------------------------------------|
-| `WorldMap` | Representa o mapa do mundo do jogo.          |
+By utilizing the `TurnBased` class, manage the game's logic and turns for each player on the map.
 
-Métodos:
 
-| Método            | Descrição                                      |
-|-------------------|------------------------------------------------|
-| `__init__(width, height)` | Construtor da classe WorldMap.                 |
-| `generate_map()`          | Gera o mapa do mundo.                           |
-| `get_tile(x, y)`          | Retorna o tipo de terreno nas coordenadas dadas. |
+# WorldMap
 
-## Grid
+The `WorldMap` script contains the game's world logic creation.
 
-O script `Grid` contém a definição da classe Grid, que representa uma grade no jogo.
+## Methods
 
-Classes:
+| Method                    | Description                                                   |
+|---------------------------|---------------------------------------------------------------|
+| `WorldMap()` | Constructor for the `WorldMap` class. Initializes the game's world. |
+| `CreateMap()`          | Creates the world matrix. |
 
-| Classe     | Descrição                              |
-|------------|----------------------------------------|
-| `Grid` | Representa uma grade no jogo.        |
+The `WorldMap` class represents a manager manipulating the world's game logic and how big the world will be. Also, the proportion can be set.
 
-Métodos:
+By utilizing the `WorldMap` class, you can manage the game's world and set width, and height, and implements many other properties.
 
-| Método                | Descrição                                       |
-|-----------------------|-------------------------------------------------|
-| `__init__(rows, columns)` | Construtor da classe Grid.
 
-                      |
-| `get_cell(row, column)`   | Retorna o valor da célula nas coordenadas dadas. |
-| `set_cell(row, column, value)` | Define o valor da célula nas coordenadas dadas. |
+# Grid
 
-## Types
+The `Grid` script contains the game's world matrix logic.
 
-O script `Types` contém definições de tipos de dados utilizados no jogo.
+## Methods
 
-Tipos:
+| Method                    | Description                                                   |
+|---------------------------|---------------------------------------------------------------|
+| `Grid()` | Builds a matrix of cells that the player and enemies can navigate through during gameplay. |
+| `drawBattlefield()`          | Draw the world's matrix. |
 
-| Tipo     | Descrição                                     |
-|----------|-----------------------------------------------|
-| `Position` | Representa uma posição no jogo, com coordenadas x e y. |
+The `Grid` class represents a manager. You can manipulate the world's matrix logic by rows and columns. Also, the proportion can be set using different values for each property.
 
-## Utils
 
-O script `Utils` contém funções utilitárias para o jogo.
+# Types
 
-Funções:
+The `Types` script contains structs that define important types for the game.
 
-| Função                                  | Descrição                                           |
-|-----------------------------------------|-----------------------------------------------------|
-| `calculate_distance(position1, position2)` | Calcula a distância entre duas posições no jogo.    |
-| `is_valid_position(position)`              | Verifica se uma posição é válida no jogo.            |
+## Methods
 
-## Program
+| Method                    | Description                                                   |
+|---------------------------|---------------------------------------------------------------|
+| `GridBox()` | Builds a cell that the player and enemies can navigate through during gameplay. |
+| `CharacterClass()`          | Has a numerical representation that defines the class of each character in the game. |
 
-O script `Program` é o ponto de entrada do programa principal.
+The `Types` class represents a bunch of useful types.
 
-Funções:
 
-| Função    | Descrição                                          |
-|-----------|----------------------------------------------------|
-| `main()` | Função principal que inicia o programa.              |
+# Utils
 
-Espero que essa versão simplificada utilizando tabelas seja útil para documentar seus scripts!
+The `Utils` script contains publicly accessible useful generic methods.
+
+## Methods
+
+| Method                    | Description                                                   |
+|---------------------------|---------------------------------------------------------------|
+| `GetRandomInt()` | Returns a random integer between (x,(inclusive) y(exclusive)). |
+| `CheckNeighborhood()` | Checks cells based on a given position and search range. |
+| `GetGridBoxByOffset()` | Returns a GridBox based on a given offset. |
+
+The `Types` class provides a bunch of useful generic methods.
+
