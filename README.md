@@ -54,8 +54,6 @@ The `TurnBased` script contains the game's logic creation.
 | `TurnBased()` | Constructor for the `TurnBased` class. Initializes the game's logic. |
 | `StartTurn()`          | Starts turns for each player in the global player list order. |
 | `HandleTurn()`        | Wait for the player to press a key to proceed to the next action while the players have life.                  |
-| `SetupTargets()`        | Set targets for the given character.                  |
-| `AllocateCharacter()`        | Allocate characters on the game map.                  |
 
 The `TurnBased` class represents a manager to manipulate the game logic and how the turns will work.
 
