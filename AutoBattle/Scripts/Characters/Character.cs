@@ -1,7 +1,6 @@
 ﻿using static AutoBattle.Types;
 using System;
 
-
 namespace AutoBattle
 {
     public class Character
@@ -11,12 +10,12 @@ namespace AutoBattle
         public string name;
         public float health;
         public float baseDamage;
-        public float damageMultiplier;
         public int playerIndex;
         public bool isDead;
 
         Utils utils = new Utils();
 
+        // Initializes a character with the given type.
         public Character(CharacterClass characterClass)
         {
             this.name = characterClass.ToString();
@@ -24,7 +23,8 @@ namespace AutoBattle
 
             Console.WriteLine($"Name: {this.name}");
         }
-
+        
+        // Starts character's turn
         public void StartTurn(ref Grid battlefield)
         {
             if (this.health > 0)
@@ -61,7 +61,8 @@ namespace AutoBattle
                 return;
             }
         }
-        // Check in x and y directions if there is any character close enough to attack.
+
+        // Scans neighborhood cells looking for enemies
         bool CheckCloseTargets(Grid battlefield)
         {
             // limits check inside the matrix
@@ -88,7 +89,8 @@ namespace AutoBattle
 
             return false;
         }
-        //walks to offset position
+        
+        // Walks to offset position
         public void WalkTO(ref Grid battlefield, int offset, bool CanWalk)
         {
             //if there is no target close enough, calculates in which direction this character should move to be closer to a possible target
@@ -104,10 +106,8 @@ namespace AutoBattle
                 battlefield.drawBattlefield();
             }
         }
-        private bool GetBorder()
-        {
-            return false;
-        }
+
+        // Check neighborhood cells and attack if the cell is occupied
         public void Attack(Character target)
         {
             int randDamage = utils.GetRandomInt(0, (int)baseDamage);
@@ -119,12 +119,16 @@ namespace AutoBattle
             Console.WriteLine($"-----------------------------------------------");
 
         }
+
+        // Take damage
         public void TakeDamage(float amount)
         {
             this.health -= amount;
             Console.WriteLine($"{this.name} HP: {this.health}\n");
             Die();
         }
+
+        // Player death
         public void Die()
         {
             if (this.health <= 0)

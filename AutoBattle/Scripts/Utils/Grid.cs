@@ -10,6 +10,7 @@ namespace AutoBattle
         public int xLength;
         public int yLength;
 
+        // Creates a matrix of cells to characters navigate through during gameplay
         public Grid(int lines, int columns)
         {
             xLength = lines;
@@ -25,7 +26,8 @@ namespace AutoBattle
                 }
             }
         }
-        // prints the matrix that indicates the tiles of the battlefield
+        
+        // Print world matrix 
         public void drawBattlefield()
         {
             for (int i = 0; i < xLength; i++)

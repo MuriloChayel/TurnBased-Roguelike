@@ -1,5 +1,4 @@
-﻿
-namespace AutoBattle
+﻿namespace AutoBattle
 {
     class Program
     {
@@ -10,6 +9,7 @@ namespace AutoBattle
             TurnBased turnBased;
             Setup();
 
+            // Entry point
             void Setup()
             {
                 worldMap = new WorldMap();
@@ -18,6 +18,7 @@ namespace AutoBattle
 
                 StartGame();
             }
+
             void StartGame()
             {
                 turnBased = new TurnBased(ref worldMap.grid!, ref characters.allPlayers);
