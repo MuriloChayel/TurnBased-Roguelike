@@ -8,10 +8,13 @@ namespace AutoBattle
         private int width;
         private int height;
 
+        // Initializes world map
         public WorldMap()
         {
             CreateMap();
         }
+
+        // Creates world matrix
         void CreateMap()
         {
             Console.WriteLine("Map width: (At least 2)");

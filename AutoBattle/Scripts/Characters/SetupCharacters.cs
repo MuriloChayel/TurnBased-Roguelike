@@ -10,13 +10,15 @@ namespace AutoBattle
         public Character playerCharacter;
         public Character enemyCharacter;
         public List<Character> allPlayers = new List<Character>();
-
         private Utils utils = new Utils();
 
+        // Initializes character's properties
         public SetupCharacters()
         {
             SetupCharactersProperties();
         }
+
+        // Setup characters's properties
         public void SetupCharactersProperties()
         {
             //asks for the player to choose between for possible classes via console.
@@ -36,6 +38,8 @@ namespace AutoBattle
             enemyCharacter = CreateCharacter(utils.GetRandomInt(1, 5));
             SetupTargets();
         }
+
+        // Create new characters with a given type
         public Character CreateCharacter(int classIndex)
         {
             CharacterClass characterClass = (CharacterClass)classIndex;
@@ -52,11 +56,15 @@ namespace AutoBattle
             allPlayers.Add(character);
             return character;
         }
+
+        // Set targets for the given character
         private void SetupTargets()
         {
             this.playerCharacter.target = this.enemyCharacter;
             this.enemyCharacter.target = this.playerCharacter;
         }
+
+        // Allocate characters on the map
         public void AllocateCharacter(ref Grid grid)
         {
             foreach (Character character in allPlayers)

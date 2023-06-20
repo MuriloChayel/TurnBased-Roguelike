@@ -10,11 +10,14 @@ namespace AutoBattle
         private Utils utils;
         public bool endGame = false;
 
+        // Initializes game manager
         public TurnBased(ref Grid grid, ref List<Character> allPlayers)
         {
             utils = new Utils();
             StartTurn(ref grid, ref allPlayers);
         }
+
+        // Starts turns for player
         public void StartTurn(ref Grid grid, ref List<Character> allPlayers)
         {
             // randomizes all players at start 
@@ -30,6 +33,8 @@ namespace AutoBattle
             currentTurn++;
             HandleTurn(ref grid, ref allPlayers);
         }
+
+        // Wait player press a key to proceed to the next action while player have life.
         private void HandleTurn(ref Grid grid, ref List<Character> allPlayers)
         {
             // int id = 0;

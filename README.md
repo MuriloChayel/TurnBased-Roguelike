@@ -118,5 +118,3 @@ The `Utils` script contains publicly accessible useful generic methods.
 
 The `Types` class provides a bunch of useful generic methods.
 
-
-
